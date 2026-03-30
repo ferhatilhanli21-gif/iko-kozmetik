@@ -177,7 +177,7 @@ function FairGallery() {
 
   return (
     <section className="py-14 md:py-24 px-4 sm:px-6" style={{ background: "var(--bg-elevated)" }}>
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SR>
           <div className="text-center mb-16">
             <span className="font-accent italic text-gold text-lg block mb-2">{t.gallery.tag}</span>
@@ -186,87 +186,58 @@ function FairGallery() {
           </div>
         </SR>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {/* Sol: Video */}
-          <SR>
-            <div className="relative rounded-2xl overflow-hidden" style={{ background: "#000" }}>
-              <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-                <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
-                  <div key={currentVideo} className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
+        {/* Videolar — yan yana, dikey oran, kırpılmadan */}
+        <SR>
+          <div className="flex justify-center gap-4 md:gap-6 mb-8">
+            {videos.map((vid, i) => (
+              <div key={vid} className="relative rounded-2xl overflow-hidden flex-shrink-0" style={{ background: "#000", width: "min(280px, 42vw)" }}>
+                <div style={{ padding: "177.78% 0 0 0", position: "relative" }}>
+                  <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
+                    <div className={`wistia_embed wistia_async_${vid} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
+                  </div>
                 </div>
               </div>
-              {/* Video navigation */}
-              {videos.length > 1 && (
-                <div className="absolute bottom-4 inset-x-0 flex items-center justify-center gap-3 z-10">
-                  <button
-                    onClick={() => setCurrentVideo(prev => prev === 0 ? videos.length - 1 : prev - 1)}
-                    className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                    style={{ background: 'rgba(0,0,0,0.5)', color: 'white', backdropFilter: 'blur(8px)' }}
-                  >
-                    ‹
-                  </button>
-                  {videos.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentVideo(i)}
-                      className="h-2 rounded-full transition-all duration-300"
-                      style={{
-                        width: i === currentVideo ? 24 : 8,
-                        background: i === currentVideo ? 'var(--accent)' : 'rgba(255,255,255,0.5)',
-                      }}
-                    />
-                  ))}
-                  <button
-                    onClick={() => setCurrentVideo(prev => (prev + 1) % videos.length)}
-                    className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                    style={{ background: 'rgba(0,0,0,0.5)', color: 'white', backdropFilter: 'blur(8px)' }}
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
-            </div>
-          </SR>
+            ))}
+          </div>
+        </SR>
 
-          {/* Sağ: Kaydırmalı Fotoğraf Galerisi */}
-          <SR delay={0.15}>
-            <div className="relative rounded-2xl overflow-hidden" style={{ background: "var(--bg-card)", paddingTop: "56.25%" }}>
-              {galleryImages.map((img, i) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={i}
-                  src={img.src}
-                  alt={img.alt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{
-                    opacity: i === current ? 1 : 0,
-                    transform: i === current ? 'scale(1)' : 'scale(1.05)',
-                    transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-in-out',
-                  }}
-                />
-              ))}
-              {/* Gradient overlay */}
-              <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)" }} />
-              {/* Alt bilgi */}
-              <div className="absolute bottom-0 inset-x-0 p-6">
-                <p className="text-white text-sm font-medium mb-3" style={{ transition: 'opacity 0.5s' }}>{galleryImages[current].alt}</p>
-                <div className="flex gap-2">
-                  {galleryImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrent(i)}
-                      className="h-1.5 rounded-full transition-all duration-500"
-                      style={{
-                        width: i === current ? 28 : 10,
-                        background: i === current ? 'var(--accent)' : 'rgba(255,255,255,0.4)',
-                      }}
-                    />
-                  ))}
-                </div>
+        {/* Fotoğraf Galerisi */}
+        <SR delay={0.15}>
+          <div className="relative rounded-2xl overflow-hidden mx-auto" style={{ background: "var(--bg-card)", maxWidth: 900 }}>
+            <div style={{ paddingTop: "50%" }} />
+            {galleryImages.map((img, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={img.src}
+                alt={img.alt}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  opacity: i === current ? 1 : 0,
+                  transform: i === current ? 'scale(1)' : 'scale(1.05)',
+                  transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-in-out',
+                }}
+              />
+            ))}
+            <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)" }} />
+            <div className="absolute bottom-0 inset-x-0 p-6">
+              <p className="text-white text-sm font-medium mb-3" style={{ transition: 'opacity 0.5s' }}>{galleryImages[current].alt}</p>
+              <div className="flex gap-2">
+                {galleryImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    className="h-1.5 rounded-full transition-all duration-500"
+                    style={{
+                      width: i === current ? 28 : 10,
+                      background: i === current ? 'var(--accent)' : 'rgba(255,255,255,0.4)',
+                    }}
+                  />
+                ))}
               </div>
             </div>
-          </SR>
-        </div>
+          </div>
+        </SR>
       </div>
     </section>
   )
