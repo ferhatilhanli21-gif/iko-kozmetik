@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="tr" suppressHydrationWarning>
       <head>
         <script src="https://fast.wistia.com/embed/medias/p0n4ksxtxs.jsonp" async></script>
+        <script src="https://fast.wistia.com/embed/medias/jkop1e67e1.jsonp" async></script>
         <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
       </head>
       <body className={`${playfair.variable} ${dmSans.variable} ${cormorant.variable} font-sans antialiased`}>

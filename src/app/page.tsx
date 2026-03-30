@@ -159,7 +159,7 @@ function MorgansShowcase() {
 
 function FairGallery() {
   const { t } = useLang()
-  const videos = ["p0n4ksxtxs"]
+  const videos = ["p0n4ksxtxs", "jkop1e67e1"]
   const galleryImages = [
     { src: "/images/fuar-1.png", alt: "Menspire Academy" },
     { src: "/images/fuar-2.png", alt: "Berber Gösterisi" },
@@ -197,21 +197,32 @@ function FairGallery() {
               </div>
               {/* Video navigation */}
               {videos.length > 1 && (
-                <div className="absolute bottom-4 right-4 flex gap-2 z-10">
+                <div className="absolute bottom-4 inset-x-0 flex items-center justify-center gap-3 z-10">
+                  <button
+                    onClick={() => setCurrentVideo(prev => prev === 0 ? videos.length - 1 : prev - 1)}
+                    className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                    style={{ background: 'rgba(0,0,0,0.5)', color: 'white', backdropFilter: 'blur(8px)' }}
+                  >
+                    ‹
+                  </button>
                   {videos.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentVideo(i)}
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all"
+                      className="h-2 rounded-full transition-all duration-300"
                       style={{
-                        background: i === currentVideo ? 'var(--accent)' : 'rgba(255,255,255,0.3)',
-                        color: 'white',
-                        backdropFilter: 'blur(8px)',
+                        width: i === currentVideo ? 24 : 8,
+                        background: i === currentVideo ? 'var(--accent)' : 'rgba(255,255,255,0.5)',
                       }}
-                    >
-                      {i + 1}
-                    </button>
+                    />
                   ))}
+                  <button
+                    onClick={() => setCurrentVideo(prev => (prev + 1) % videos.length)}
+                    className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                    style={{ background: 'rgba(0,0,0,0.5)', color: 'white', backdropFilter: 'blur(8px)' }}
+                  >
+                    ›
+                  </button>
                 </div>
               )}
             </div>
