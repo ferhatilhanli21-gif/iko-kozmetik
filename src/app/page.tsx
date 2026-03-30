@@ -177,7 +177,7 @@ function FairGallery() {
 
   return (
     <section className="py-14 md:py-24 px-4 sm:px-6" style={{ background: "var(--bg-elevated)" }}>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <SR>
           <div className="text-center mb-16">
             <span className="font-accent italic text-gold text-lg block mb-2">{t.gallery.tag}</span>
@@ -190,7 +190,7 @@ function FairGallery() {
           {/* Sol: Video */}
           <SR>
             <div className="relative rounded-2xl overflow-hidden" style={{ background: "#000" }}>
-              <div style={{ padding: "125% 0 0 0", position: "relative" }}>
+              <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
                 <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
                   <div key={currentVideo} className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
                 </div>
@@ -230,7 +230,7 @@ function FairGallery() {
 
           {/* Sağ: Kaydırmalı Fotoğraf Galerisi */}
           <SR delay={0.15}>
-            <div className="relative rounded-2xl overflow-hidden" style={{ background: "var(--bg-card)", paddingTop: "125%" }}>
+            <div className="relative rounded-2xl overflow-hidden" style={{ background: "var(--bg-card)", paddingTop: "56.25%" }}>
               {galleryImages.map((img, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -365,8 +365,8 @@ export default function HomePage() {
       <Marquee />
       <MorgansShowcase />
       <FairGallery />
-      <AboutPreview />
       <Stats />
+      <AboutPreview />
       <CTA />
       <Footer />
     </>
