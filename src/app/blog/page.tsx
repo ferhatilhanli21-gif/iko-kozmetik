@@ -67,9 +67,9 @@ export default function BlogPage() {
           )}
 
           {loading ? (
-            <div className="text-center py-20" style={{ color: "var(--text-muted)" }}>Yükleniyor...</div>
+            <div className="text-center py-20" style={{ color: "var(--text-muted)" }}>{t.blog.loading}</div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-20" style={{ color: "var(--text-muted)" }}>Henüz yazı yok.</div>
+            <div className="text-center py-20" style={{ color: "var(--text-muted)" }}>{t.blog.no_posts}</div>
           ) : (
             <AnimatePresence mode="wait">
               <motion.div key={active} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export default function BlogPage() {
                             // eslint-disable-next-line @next/next/no-img-element
                             <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover" />
                           ) : (
-                            <span className="text-xs italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ BLOG GÖRSELİ ]</span>
+                            <span className="text-xs italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>{t.blog.placeholder_image}</span>
                           )}
                           {post.category && (
                             <span className="absolute top-3 left-3 text-[.6rem] tracking-wider uppercase px-2.5 py-1 rounded-full font-semibold"

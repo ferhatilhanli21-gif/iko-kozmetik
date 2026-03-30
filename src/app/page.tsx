@@ -39,7 +39,7 @@ function Hero() {
           transition={{ delay: 0.55, duration: 0.8 }}
           className="text-sm md:text-base leading-relaxed max-w-lg mb-10"
           style={{ color: "var(--text-muted)" }}>
-          İstanbul&apos;un yıllardır en çok bilinen profesyonel salonlarına hizmet veren marka..
+          {t.hero.desc}
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,8 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ["İKO KOZMETİK", "Türkiye'nin Bir Çok Şehrinde Bulunan, Profesyonel Salonlara Ürün Hizmeti Sunan Marka."]
+  const { t } = useLang()
+  const items = t.marquee
   const all = [...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items]
   return (
     <div className="py-4 border-y overflow-hidden" style={{ borderColor: "var(--border)", background: "var(--bg-elevated)" }}>
@@ -140,7 +141,7 @@ function MorgansShowcase() {
                   <img src={images[i]} alt={cat} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 flex items-end justify-center pb-5 opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ background: "linear-gradient(to top, rgba(201,168,76,0.15), transparent)" }}>
-                    <span className="text-[.65rem] tracking-[.12em] uppercase font-semibold" style={{ color: "var(--accent)" }}>Keşfet →</span>
+                    <span className="text-[.65rem] tracking-[.12em] uppercase font-semibold" style={{ color: "var(--accent)" }}>{t.brands.explore_hover}</span>
                   </div>
                 </div>
                 <div className="p-5">

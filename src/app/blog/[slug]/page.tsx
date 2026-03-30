@@ -9,6 +9,7 @@ import { supabase } from '@/lib/supabase'
 import { format } from 'date-fns'
 import { tr } from 'date-fns/locale'
 import type { Post } from '@/lib/admin-data'
+import { BlogBackLink, BlogBackAllLink } from './blog-links'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -35,14 +36,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Hero */}
       <section className="relative pt-32 pb-16 px-6 grid-bg">
         <div className="max-w-3xl mx-auto">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-8 transition-colors hover:opacity-70"
-            style={{ color: 'var(--text-muted)' }}
-          >
-            <ArrowLeft size={14} />
-            Blog&apos;a Dön
-          </Link>
+          <BlogBackLink />
 
           {p.category && (
             <span
@@ -114,14 +108,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <div className="mt-16 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider transition-colors hover:opacity-70"
-            style={{ color: 'var(--accent)' }}
-          >
-            <ArrowLeft size={14} />
-            Tüm Yazılara Dön
-          </Link>
+          <BlogBackAllLink />
         </div>
       </article>
 
