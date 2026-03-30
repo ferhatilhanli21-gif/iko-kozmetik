@@ -8,8 +8,8 @@ export const translations = {
     nav: { home: "Anasayfa", about: "Hakkımızda", blog: "Blog", contact: "İletişim", cta: "Bize Ulaşın" },
     hero: {
       badge: "Morgan's Pomade Türkiye Distribütörü",
-      title1: "Erkeğin Bakımda",
-      title2: "Yeni Çağı",
+      title1: "Profesyonel Kozmetik Markalarını",
+      title2: "Sizlerle Buluşturuyoruz",
       desc: "1873'ten bu yana zamansız stil ve kaliteyi buluşturan Morgan's Pomade, 50'den fazla ülkede profesyonel erkek bakım ürünleri sunmaktadır.",
       btn1: "Markalarımız",
       btn2: "Hikayemiz",

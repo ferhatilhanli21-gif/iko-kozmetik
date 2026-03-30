@@ -32,7 +32,7 @@ function Hero() {
           className="font-heading text-4xl sm:text-5xl md:text-7xl font-normal leading-[1.05] mb-5 max-w-4xl">
           <span className="italic text-gradient">{t.hero.title1}</span>
           <br />
-          <span style={{ color: "var(--text)" }}>{t.hero.title2}</span>
+          <span className="text-3xl sm:text-4xl md:text-5xl" style={{ color: "var(--text)" }}>{t.hero.title2}</span>
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -67,25 +67,6 @@ function Hero() {
             <span className="text-[.7rem] tracking-wider uppercase" style={{ color: "var(--text-muted)" }}>{t.hero.badge}</span>
           </motion.div>
 
-          <div className="flex gap-2 sm:gap-4 flex-wrap">
-            {[
-              { icon: Globe2, val: "50+", label: "Countries" },
-              { icon: Award, val: "1B+", label: "Jars Sold" },
-              { icon: Zap, val: "1873", label: "Est." },
-            ].map((s, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1 + i * 0.1 }}
-                className="flex items-center gap-3 px-5 py-3 rounded-2xl border backdrop-blur-sm"
-                style={{ borderColor: "var(--border-strong)", background: "var(--bg-card)", boxShadow: "var(--shadow)" }}>
-                <s.icon size={18} className="text-gold" />
-                <div>
-                  <div className="font-heading font-bold text-lg leading-none" style={{ color: "var(--text)" }}>{s.val}</div>
-                  <div className="text-[.6rem] uppercase tracking-wider mt-0.5" style={{ color: "var(--text-muted)" }}>{s.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </motion.div>
 
