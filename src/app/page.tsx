@@ -172,23 +172,26 @@ function FairGallery() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-[160px] sm:auto-rows-[200px] lg:auto-rows-[240px]">
           <SR className="col-span-2 row-span-2">
             <div className="relative rounded-2xl overflow-hidden group w-full h-full" style={{ background: "var(--bg-card)" }}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-sm italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ FUAR ANA GÖRSEL ]</span>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/fuar-4.png" alt="Morgan's Pomade Fuar" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6"
-                style={{ background: "linear-gradient(to top, rgba(79,110,247,0.2), transparent)" }}>
-                <h3 className="font-heading text-sm" style={{ color: "var(--text)" }}>Fuar / Etkinlik</h3>
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
+                <h3 className="font-heading text-sm text-white">Fuar / Etkinlik</h3>
               </div>
             </div>
           </SR>
-          {[2, 3, 4, 5].map(i => (
+          {[
+            { src: "/images/fuar-1.png", alt: "Menspire Academy" },
+            { src: "/images/fuar-2.png", alt: "Berber Gösterisi" },
+            { src: "/images/fuar-3.png", alt: "Morgan's Pomade Show" },
+            { src: "/images/fuar-5.png", alt: "Etkinlik Katılımcıları" },
+          ].map((img, i) => (
             <SR key={i} delay={i * 0.07}>
               <div className="relative rounded-2xl overflow-hidden group w-full h-full" style={{ background: "var(--bg-card)" }}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xs italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ GÖRSEL {i} ]</span>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500"
-                  style={{ background: "linear-gradient(to top, rgba(79,110,247,0.2), transparent)" }} />
+                  style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), transparent)" }} />
               </div>
             </SR>
           ))}
