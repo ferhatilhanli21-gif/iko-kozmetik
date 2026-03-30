@@ -10,8 +10,8 @@
   --color-gold: #C9A84C;
   --color-gold-light: #DDBF6A;
   --color-gold-dark: #8B734A;
-  --color-accent: #4F6EF7;
-  --color-accent-light: #6B8BFF;
+  --color-accent: #C9A84C;
+  --color-accent-light: #DDBF6A;
 
   --animate-marquee: marquee 35s linear infinite;
   --animate-fade-up: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
