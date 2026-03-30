@@ -35,12 +35,6 @@ function Hero() {
           <span className="text-3xl sm:text-4xl md:text-5xl" style={{ color: "var(--text)" }}>{t.hero.title2}</span>
         </motion.h1>
 
-        <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.8 }}
-          className="text-sm md:text-base leading-relaxed max-w-lg mb-10"
-          style={{ color: "var(--text-muted)" }}>
-          {t.hero.desc}
-        </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.8 }}
