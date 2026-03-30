@@ -128,7 +128,7 @@ function MorgansShowcase() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {t.brands.cats.map((cat, i) => {
-            const images = ["/images/Pomatlar.webp", "/images/Şampuan-Saç-Kremi.webp", "/images/Sakal-Tiraş.webp", "/images/Şekillendirici-Krem.webp"]
+            const images = ["/images/pomatlar.webp", "/images/sampuan-sac-kremi.webp", "/images/sakal-tiras.webp", "/images/sekillendirici-krem.webp"]
             return (
             <SR key={i} delay={i * 0.1}>
               <div className="group rounded-2xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
