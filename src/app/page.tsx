@@ -127,13 +127,16 @@ function MorgansShowcase() {
         </SR>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-          {t.brands.cats.map((cat, i) => (
+          {t.brands.cats.map((cat, i) => {
+            const images = ["/images/Pomatlar.webp", "/images/Şampuan-Saç-Kremi.webp", "/images/Sakal-Tiraş.webp", "/images/Şekillendirici-Krem.webp"]
+            return (
             <SR key={i} delay={i * 0.1}>
               <div className="group rounded-2xl overflow-hidden border transition-all duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
                 style={{ borderColor: "var(--border)", background: "var(--bg-card)" }}>
-                <div className="aspect-[4/5] flex items-center justify-center overflow-hidden relative"
+                <div className="aspect-[4/5] overflow-hidden relative"
                   style={{ background: "var(--bg-elevated)" }}>
-                  <span className="text-xs italic p-4 text-center" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ GÖRSEL ]</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={images[i]} alt={cat} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 flex items-end justify-center pb-5 opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ background: "linear-gradient(to top, rgba(79,110,247,0.15), transparent)" }}>
                     <span className="text-[.65rem] tracking-[.12em] uppercase font-semibold" style={{ color: "var(--accent)" }}>Keşfet →</span>
@@ -145,7 +148,8 @@ function MorgansShowcase() {
                 </div>
               </div>
             </SR>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
