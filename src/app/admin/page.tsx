@@ -25,7 +25,7 @@ export default function AdminLoginPage() {
     setLoading(true)
 
     // Simple auth check
-    if (username === 'admin' && password === 'admin') {
+    if (username === 'ikokozmetik' && password === 'ikokozmetik2026') {
       sessionStorage.setItem('admin_auth', 'true')
       router.push('/admin/dashboard')
     } else {
