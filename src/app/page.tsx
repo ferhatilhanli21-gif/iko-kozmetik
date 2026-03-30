@@ -192,7 +192,7 @@ function FairGallery() {
             <div className="relative rounded-2xl overflow-hidden" style={{ background: "#000" }}>
               <div style={{ padding: "125% 0 0 0", position: "relative" }}>
                 <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
-                  <div className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
+                  <div key={currentVideo} className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
                 </div>
               </div>
               {/* Video navigation */}
