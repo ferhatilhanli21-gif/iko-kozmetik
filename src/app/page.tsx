@@ -69,7 +69,7 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ["İKO KOZMETİK", "MORGAN'S POMADE", "EST. 1873", "LONDON", "PROFESSIONAL GROOMING", "50+ COUNTRIES", "1 BILLION JARS"]
+  const items = ["İKO KOZMETİK", "MORGAN'S POMADE"]
   const all = [...items, ...items, ...items, ...items]
   return (
     <div className="py-4 border-y overflow-hidden" style={{ borderColor: "var(--border)", background: "var(--bg-elevated)" }}>
