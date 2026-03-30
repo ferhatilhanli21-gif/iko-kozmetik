@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   title: "İKO KOZMETİK — Erkek Bakım & Kozmetik",
   description: "Morgan's Pomade Türkiye Distribütörü. Profesyonel erkek bakım ve kozmetik ürünleri.",
   icons: {
-    icon: "/images/logo sekme.jpg",
-    apple: "/images/logo sekme.jpg",
+    icon: "/images/logo-sekme.jpg",
+    apple: "/images/logo-sekme.jpg",
   },
 }
 
