@@ -61,7 +61,7 @@ export function Footer() {
         </div>
 
         <div className="flex justify-between items-center pt-5 border-t" style={{ borderColor: "var(--border)" }}>
-          <p className="text-xs" style={{ color: "var(--text-muted)", opacity: 0.6 }}>{t.footer.rights}</p>
+          <p className="text-xs" style={{ color: "var(--text-muted)", opacity: 0.6 }}>{t.footer.rights} <a href="https://sorajans.com.tr/" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline" style={{ color: "#E53E3E" }}>Powered By SorAjans</a></p>
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="w-8 h-8 rounded-full border flex items-center justify-center text-sm transition-all hover:scale-110 hover:text-gold"
             style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)" }}>↑</button>
