@@ -36,7 +36,7 @@ export default function HakkimizdaPage() {
             <div className="aspect-[3/4] rounded-3xl overflow-hidden"
               style={{ background: "var(--bg-elevated)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/hikaye-ofis.webp" alt="İKO Kozmetik Ofis" className="w-full h-full object-cover" />
+              <img src="/images/adsiz-tasarim.png" alt="İKO Kozmetik" className="w-full h-full object-cover" />
             </div>
           </SR>
         </div>
