@@ -171,12 +171,11 @@ function FairGallery() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-[160px] sm:auto-rows-[200px] lg:auto-rows-[240px]">
           <SR className="col-span-2 row-span-2">
-            <div className="relative rounded-2xl overflow-hidden group w-full h-full" style={{ background: "var(--bg-card)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/fuar-4.png" alt="Morgan's Pomade Fuar" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
-                <h3 className="font-heading text-sm text-white">Fuar / Etkinlik</h3>
+            <div className="relative rounded-2xl overflow-hidden w-full h-full" style={{ background: "#000" }}>
+              <div className="wistia_responsive_padding" style={{ padding: "56.25% 0 0 0", position: "relative", height: "100%" }}>
+                <div className="wistia_responsive_wrapper" style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
+                  <div className="wistia_embed wistia_async_p0n4ksxtxs seo=true videoFoam=true" style={{ height: "100%", position: "relative", width: "100%" }} />
+                </div>
               </div>
             </div>
           </SR>
