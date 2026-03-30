@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SR } from "@/components/scroll-reveal"
@@ -158,6 +158,20 @@ function MorgansShowcase() {
 
 function FairGallery() {
   const { t } = useLang()
+  const galleryImages = [
+    { src: "/images/fuar-1.png", alt: "Menspire Academy" },
+    { src: "/images/fuar-2.png", alt: "Berber Gösterisi" },
+    { src: "/images/fuar-3.png", alt: "Morgan's Pomade Show" },
+    { src: "/images/fuar-4.png", alt: "Morgan's Pomade Banner" },
+    { src: "/images/fuar-5.png", alt: "Etkinlik Katılımcıları" },
+  ]
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrent(prev => (prev + 1) % galleryImages.length), 4000)
+    return () => clearInterval(timer)
+  }, [galleryImages.length])
+
   return (
     <section className="py-14 md:py-24 px-4 sm:px-6" style={{ background: "var(--bg-elevated)" }}>
       <div className="max-w-6xl mx-auto">
@@ -169,31 +183,56 @@ function FairGallery() {
           </div>
         </SR>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-[160px] sm:auto-rows-[200px] lg:auto-rows-[240px]">
-          <SR className="col-span-2 row-span-2">
-            <div className="relative rounded-2xl overflow-hidden w-full h-full" style={{ background: "#000" }}>
-              <div className="wistia_responsive_padding" style={{ padding: "56.25% 0 0 0", position: "relative", height: "100%" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Sol: Sabit Video */}
+          <SR>
+            <div className="rounded-2xl overflow-hidden" style={{ background: "#000" }}>
+              <div className="wistia_responsive_padding" style={{ padding: "177.78% 0 0 0", position: "relative" }}>
                 <div className="wistia_responsive_wrapper" style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
                   <div className="wistia_embed wistia_async_p0n4ksxtxs seo=true videoFoam=true" style={{ height: "100%", position: "relative", width: "100%" }} />
                 </div>
               </div>
             </div>
           </SR>
-          {[
-            { src: "/images/fuar-1.png", alt: "Menspire Academy" },
-            { src: "/images/fuar-2.png", alt: "Berber Gösterisi" },
-            { src: "/images/fuar-3.png", alt: "Morgan's Pomade Show" },
-            { src: "/images/fuar-5.png", alt: "Etkinlik Katılımcıları" },
-          ].map((img, i) => (
-            <SR key={i} delay={i * 0.07}>
-              <div className="relative rounded-2xl overflow-hidden group w-full h-full" style={{ background: "var(--bg-card)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500"
-                  style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), transparent)" }} />
+
+          {/* Sağ: Kaydırmalı Fotoğraf Galerisi */}
+          <SR delay={0.15}>
+            <div className="relative rounded-2xl overflow-hidden" style={{ background: "var(--bg-card)" }}>
+              {/* Ana görsel */}
+              <div className="relative aspect-[9/16] w-full overflow-hidden">
+                {galleryImages.map((img, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={i}
+                    src={img.src}
+                    alt={img.alt}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                    style={{ opacity: i === current ? 1 : 0 }}
+                  />
+                ))}
+                {/* Gradient overlay */}
+                <div className="absolute inset-x-0 bottom-0 h-32" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }} />
+                {/* Alt bilgi */}
+                <div className="absolute bottom-0 inset-x-0 p-5">
+                  <p className="text-white text-sm font-medium mb-3">{galleryImages[current].alt}</p>
+                  {/* Dots */}
+                  <div className="flex gap-1.5">
+                    {galleryImages.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrent(i)}
+                        className="h-1 rounded-full transition-all duration-300"
+                        style={{
+                          width: i === current ? 24 : 8,
+                          background: i === current ? 'white' : 'rgba(255,255,255,0.4)',
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
-            </SR>
-          ))}
+            </div>
+          </SR>
         </div>
       </div>
     </section>
