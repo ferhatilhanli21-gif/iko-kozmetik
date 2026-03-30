@@ -1,8 +1,8 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Menu, Sun, Moon, ChevronRight } from 'lucide-react'
+import { Menu, Sun, Moon, ChevronRight, LogOut } from 'lucide-react'
 import { useTheme } from '@/lib/theme'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
@@ -52,7 +52,13 @@ interface HeaderProps {
 export function Header({ onMenuClick }: HeaderProps) {
   const { theme, toggle } = useTheme()
   const pathname = usePathname()
+  const router = useRouter()
   const breadcrumbs = getBreadcrumbs(pathname)
+
+  function handleLogout() {
+    sessionStorage.removeItem('admin_auth')
+    router.push('/admin')
+  }
 
   return (
     <header className="h-14 border-b border-border flex items-center justify-between px-4 md:px-6 bg-background flex-shrink-0 gap-4">
@@ -103,6 +109,10 @@ export function Header({ onMenuClick }: HeaderProps) {
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <Link href="/">Siteye Git</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout} className="text-destructive focus:text-destructive">
+              <LogOut className="h-3.5 w-3.5 mr-2" />
+              Çıkış Yap
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
