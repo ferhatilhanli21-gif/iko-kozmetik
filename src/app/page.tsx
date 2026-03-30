@@ -186,13 +186,13 @@ function FairGallery() {
           </div>
         </SR>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-h-[600px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Sol: Video */}
           <SR>
-            <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-[600px]" style={{ background: "#000" }}>
-              <div className="wistia_responsive_padding" style={{ padding: "0", position: "relative", height: "100%" }}>
-                <div className="wistia_responsive_wrapper" style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
-                  <div className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true`} style={{ height: "100%", position: "relative", width: "100%" }} />
+            <div className="relative rounded-2xl overflow-hidden" style={{ background: "#000" }}>
+              <div style={{ padding: "125% 0 0 0", position: "relative" }}>
+                <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
+                  <div className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
                 </div>
               </div>
               {/* Video navigation */}
@@ -219,7 +219,7 @@ function FairGallery() {
 
           {/* Sağ: Kaydırmalı Fotoğraf Galerisi */}
           <SR delay={0.15}>
-            <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-[600px]" style={{ background: "var(--bg-card)" }}>
+            <div className="relative rounded-2xl overflow-hidden" style={{ background: "var(--bg-card)", paddingTop: "125%" }}>
               {galleryImages.map((img, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
