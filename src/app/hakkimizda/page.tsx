@@ -33,9 +33,10 @@ export default function HakkimizdaPage() {
             ))}
           </SR>
           <SR direction="right" delay={0.2}>
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden flex items-center justify-center"
+            <div className="aspect-[3/4] rounded-3xl overflow-hidden"
               style={{ background: "var(--bg-elevated)" }}>
-              <span className="text-sm italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ HİKAYE GÖRSELİ ]</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/hikaye-ofis.webp" alt="İKO Kozmetik Ofis" className="w-full h-full object-cover" />
             </div>
           </SR>
         </div>

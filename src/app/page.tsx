@@ -279,9 +279,10 @@ function AboutPreview() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <SR direction="left">
           <div className="relative">
-            <div className="aspect-[4/3] sm:aspect-[3/4] rounded-3xl overflow-hidden flex items-center justify-center"
+            <div className="aspect-[4/3] sm:aspect-[3/4] rounded-3xl overflow-hidden"
               style={{ background: "var(--bg-elevated)" }}>
-              <span className="text-sm italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ FİRMA FOTOĞRAFI ]</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/hikaye-ofis.webp" alt="İKO Kozmetik Ofis" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-5 -right-5 w-[42%] aspect-square rounded-2xl border-4 overflow-hidden shadow-2xl"
               style={{ background: "var(--bg-card)", borderColor: "var(--bg)", position: "absolute" }}>
