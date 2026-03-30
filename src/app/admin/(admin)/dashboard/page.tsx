@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { supabase } from '@/lib/supabase'
 import { StatsCards } from '@/components/dashboard/stats-cards'
 import { RecentPosts } from '@/components/dashboard/recent-posts'
