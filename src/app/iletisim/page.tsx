@@ -23,7 +23,7 @@ function MiniMap() {
           loading="lazy" title="İKO Kozmetik Konum"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-          style={{ background: "rgba(79,110,247,0.1)" }}>
+          style={{ background: "rgba(201,168,76,0.1)" }}>
           <div className="px-4 py-2 rounded-full text-[.65rem] font-semibold uppercase tracking-wider flex items-center gap-1.5"
             style={{ background: "var(--accent)", color: "white" }}>
             <MapPin size={12} /> {t.contact.maps_open}

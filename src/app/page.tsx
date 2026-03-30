@@ -139,7 +139,7 @@ function MorgansShowcase() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={images[i]} alt={cat} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 flex items-end justify-center pb-5 opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ background: "linear-gradient(to top, rgba(79,110,247,0.15), transparent)" }}>
+                    style={{ background: "linear-gradient(to top, rgba(201,168,76,0.15), transparent)" }}>
                     <span className="text-[.65rem] tracking-[.12em] uppercase font-semibold" style={{ color: "var(--accent)" }}>Keşfet →</span>
                   </div>
                 </div>
