@@ -84,20 +84,24 @@ export function PostEditor({ post }: PostEditorProps) {
     setUploadStatus('idle')
     setUploadError('')
 
-    const ext = file.name.split('.').pop()
-    const fileName = `${Date.now()}.${ext}`
-    const { data, error } = await supabase.storage
-      .from('blog-images')
-      .upload(fileName, file, { upsert: true })
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
 
-    if (error) {
+      const res = await fetch('/api/upload', { method: 'POST', body: formData })
+      const result = await res.json()
+
+      if (!res.ok) {
+        setUploadStatus('error')
+        setUploadError(result.error || 'Yükleme başarısız.')
+      } else {
+        setFeaturedImage(result.url)
+        setUploadStatus('success')
+        setTimeout(() => setUploadStatus('idle'), 3000)
+      }
+    } catch {
       setUploadStatus('error')
-      setUploadError(error.message.includes('Bucket') ? 'Supabase\'de "blog-images" bucket\'ı oluşturulmalı.' : error.message)
-    } else if (data) {
-      const { data: urlData } = supabase.storage.from('blog-images').getPublicUrl(data.path)
-      setFeaturedImage(urlData.publicUrl)
-      setUploadStatus('success')
-      setTimeout(() => setUploadStatus('idle'), 3000)
+      setUploadError('Bağlantı hatası. Tekrar deneyin.')
     }
 
     setUploading(false)
