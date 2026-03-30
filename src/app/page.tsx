@@ -76,7 +76,7 @@ function Hero() {
 
 function Marquee() {
   const items = ["İKO KOZMETİK", "MORGAN'S POMADE"]
-  const all = [...items, ...items, ...items, ...items]
+  const all = [...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items]
   return (
     <div className="py-4 border-y overflow-hidden" style={{ borderColor: "var(--border)", background: "var(--bg-elevated)" }}>
       <div className="flex w-max animate-marquee">
