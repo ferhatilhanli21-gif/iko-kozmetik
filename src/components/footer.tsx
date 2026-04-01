@@ -37,7 +37,7 @@ export function Footer() {
             <ul className="space-y-2">
               {NAV_LINKS.map(l => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm transition-colors hover:text-gold" style={{ color: "var(--text-muted)" }}>{l.label}</Link>
+                  <Link href={l.href} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-sm transition-colors hover:text-gold" style={{ color: "var(--text-muted)" }}>{l.label}</Link>
                 </li>
               ))}
             </ul>

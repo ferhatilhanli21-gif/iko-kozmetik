@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { Search, Mail, MailOpen, Trash2, MoreHorizontal, Phone, User, AtSign, Clock, CheckCircle2 } from 'lucide-react'
 import { formatDistanceToNow, format } from 'date-fns'
+import { tr } from 'date-fns/locale'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -213,7 +214,7 @@ export function MessagesTable() {
                   </TableCell>
                   <TableCell className="hidden sm:table-cell">
                     <span className="text-xs text-muted-foreground">
-                      {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}
+                      {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true, locale: tr })}
                     </span>
                   </TableCell>
                   <TableCell>

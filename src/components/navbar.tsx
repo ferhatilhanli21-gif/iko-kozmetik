@@ -59,7 +59,7 @@ export function Navbar() {
             {/* Language toggle */}
             <button
               onClick={() => setLang(lang === "tr" ? "en" : "tr")}
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[.65rem] font-semibold uppercase tracking-wider border transition-all hover:scale-105"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[.65rem] font-semibold uppercase tracking-wider border transition-all hover:scale-105"
               style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)" }}
             >
               <Globe size={12} />

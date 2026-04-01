@@ -131,7 +131,7 @@ export default function AdminLoginPage() {
 
         {/* Footer */}
         <p className="text-center text-xs text-muted-foreground mt-6">
-          © 2025 İKO Kozmetik. Tüm hakları saklıdır.
+          © 2026 İKO Kozmetik. Tüm hakları saklıdır.
         </p>
       </div>
     </div>

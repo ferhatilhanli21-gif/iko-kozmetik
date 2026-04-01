@@ -11,6 +11,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import { supabase } from '@/lib/supabase'
 import type { ContactMessage } from '@/lib/admin-data'
 import { formatDistanceToNow, format } from 'date-fns'
+import { tr } from 'date-fns/locale'
 
 export function RecentMessages({ messages: initialMessages }: { messages: ContactMessage[] }) {
   const [messages, setMessages] = useState(initialMessages)
@@ -69,7 +70,7 @@ export function RecentMessages({ messages: initialMessages }: { messages: Contac
                       {msg.status === 'new' ? 'Yeni' : 'Okundu'}
                     </Badge>
                     <span className="text-xs text-muted-foreground">
-                      {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}
+                      {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true, locale: tr })}
                     </span>
                   </div>
                 </div>

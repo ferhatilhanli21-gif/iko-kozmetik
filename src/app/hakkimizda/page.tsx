@@ -1,5 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
+import { Eye, Target, Star } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SR } from "@/components/scroll-reveal"
@@ -53,9 +54,9 @@ export default function HakkimizdaPage() {
               <SR key={i} delay={i * 0.1} className="relative mb-12 last:mb-0">
                 <div className="absolute -left-[30px] top-1 w-3 h-3 rounded-full border-2"
                   style={{ background: "var(--accent)", borderColor: "var(--bg-elevated)" }} />
-                <span className="font-accent italic text-gold text-sm block mb-1">{m.year}</span>
+                {m.year && <span className="font-accent italic text-gold text-sm block mb-1">{m.year}</span>}
                 <h3 className="font-heading text-lg mb-1" style={{ color: "var(--text)" }}>{m.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{m.desc}</p>
+                {m.desc && <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{m.desc}</p>}
               </SR>
             ))}
           </div>
@@ -65,40 +66,27 @@ export default function HakkimizdaPage() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: "◎", title: a.vision, text: a.vision_text },
-            { icon: "◆", title: a.mission, text: a.mission_text },
-            { icon: "✦", title: a.values, text: a.values_text },
+            { icon: Eye, title: a.vision, text: a.vision_text },
+            { icon: Target, title: a.mission, text: a.mission_text },
+            { icon: Star, title: a.values, text: a.values_text },
           ].map((c, i) => (
             <SR key={i} delay={i * 0.1}>
-              <div className="p-8 rounded-3xl border text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+              <div className="p-8 rounded-3xl border text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl h-full"
                 style={{ borderColor: "var(--border)", background: "var(--bg-card)", boxShadow: "var(--shadow)" }}>
-                <div className="text-gold text-2xl mb-4">{c.icon}</div>
+                <div className="text-gold flex justify-center mb-4"><c.icon className="w-8 h-8" /></div>
                 <h3 className="font-heading text-xl mb-3" style={{ color: "var(--text)" }}>{c.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{c.text}</p>
+                <div className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {c.text.split('\n\n').map((line, j) => {
+                    const boldMatch = line.match(/\*\*(.+?)\*\*(.*)/)
+                    if (boldMatch) {
+                      return <p key={j} className="mb-2"><strong style={{ color: "var(--text)" }}>{boldMatch[1]}</strong>{boldMatch[2]}</p>
+                    }
+                    return <p key={j} className="mb-2">{line}</p>
+                  })}
+                </div>
               </div>
             </SR>
           ))}
-        </div>
-      </section>
-
-      <section className="py-24 px-6" style={{ background: "var(--bg-elevated)" }}>
-        <div className="max-w-6xl mx-auto">
-          <SR><div className="text-center mb-16">
-            <span className="font-accent italic text-gold text-lg block mb-2">{a.team_tag}</span>
-            <h2 className="font-heading text-3xl md:text-4xl" style={{ color: "var(--text)" }}>{a.team_title}</h2>
-          </div></SR>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map(i => (
-              <SR key={i} delay={i * 0.1} className="text-center">
-                <div className="w-40 h-40 mx-auto mb-4 rounded-full border-2 overflow-hidden flex items-center justify-center transition-all hover:scale-105 hover:shadow-xl"
-                  style={{ background: "var(--bg-card)", borderColor: "var(--border)" }}>
-                  <span className="text-[.6rem] italic" style={{ color: "var(--text-muted)", opacity: 0.3 }}>[ FOTO ]</span>
-                </div>
-                <h3 className="font-heading text-lg mb-0.5" style={{ color: "var(--text)" }}>[Ad Soyad]</h3>
-                <span className="text-xs uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>[Ünvan]</span>
-              </SR>
-            ))}
-          </div>
         </div>
       </section>
 

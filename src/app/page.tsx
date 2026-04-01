@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer"
 import { SR } from "@/components/scroll-reveal"
 import { ArrowRight, ArrowUpRight, Sparkles, Zap, Globe2, Award } from "lucide-react"
 import { useLang } from "@/lib/i18n"
+import { useTheme } from "@/lib/theme"
 
 function Hero() {
   const { t } = useLang()
@@ -94,6 +95,7 @@ function Marquee() {
 
 function MorgansShowcase() {
   const { t } = useLang()
+  const { theme } = useTheme()
   return (
     <section id="markalar" className="py-14 md:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
@@ -111,7 +113,7 @@ function MorgansShowcase() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="aspect-[4/3] lg:aspect-auto relative overflow-hidden"
                 style={{ background: "var(--bg-elevated)" }}>
-                <Image src="/images/Logo-5.png" alt="Morgan's Pomade" fill className="object-contain p-8" />
+                <Image src="/images/Logo-5.png" alt="Morgan's Pomade" fill className="object-contain p-8" style={{ filter: theme === "dark" ? "invert(1)" : "none" }} />
               </div>
               <div className="p-6 md:p-14 flex flex-col justify-center">
                 <span className="text-gold text-[.65rem] uppercase tracking-[.15em] mb-3">{t.brands.est}</span>
@@ -167,14 +169,41 @@ function FairGallery() {
     { src: "/images/fuar-3.png", alt: "Morgan's Pomade Show" },
     { src: "/images/fuar-4.png", alt: "Morgan's Pomade Banner" },
     { src: "/images/fuar-5.png", alt: "Etkinlik Katılımcıları" },
+    { src: "/images/WhatsApp Image 2026-03-31 at 20.01.13.jpeg", alt: "Fuar Standı" },
   ]
   const [currentVideo, setCurrentVideo] = useState(0)
-  const [current, setCurrent] = useState(0)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+  const isSwiping = useRef(false)
+  const overlayRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent(prev => (prev + 1) % galleryImages.length), 5000)
-    return () => clearInterval(timer)
-  }, [galleryImages.length])
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.targetTouches[0].clientX
+    touchEndX.current = e.targetTouches[0].clientX
+    isSwiping.current = false
+  }
+  function handleTouchMove(e: React.TouchEvent) {
+    touchEndX.current = e.targetTouches[0].clientX
+    if (Math.abs(touchStartX.current - touchEndX.current) > 20) {
+      isSwiping.current = true
+    }
+  }
+  function handleTouchEnd() {
+    const diff = touchStartX.current - touchEndX.current
+    if (isSwiping.current && Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrentVideo(prev => (prev + 1) % videos.length)
+      } else {
+        setCurrentVideo(prev => prev === 0 ? videos.length - 1 : prev - 1)
+      }
+    } else if (!isSwiping.current && overlayRef.current) {
+      // Tap — overlay'ı gizle, altındaki videoya tıklamayı geçir
+      overlayRef.current.style.pointerEvents = 'none'
+      setTimeout(() => {
+        if (overlayRef.current) overlayRef.current.style.pointerEvents = 'auto'
+      }, 300)
+    }
+  }
 
   return (
     <section className="py-14 md:py-24 px-4 sm:px-6" style={{ background: "var(--bg-elevated)" }}>
@@ -187,10 +216,22 @@ function FairGallery() {
           </div>
         </SR>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-          {/* Sol: Video — dikey oran, sağ-sol butonlarla geçiş */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5">
+          {/* Sol: Video — kaydırmalı, touch swipe destekli */}
           <SR>
-            <div className="relative rounded-2xl overflow-hidden" style={{ background: "#000" }}>
+            <div
+              className="relative rounded-2xl overflow-hidden"
+              style={{ background: "#000" }}
+            >
+              {/* Touch swipe overlay — video üstünde parmak kaydırma yakalar */}
+              <div
+                ref={overlayRef}
+                className="absolute inset-0 lg:hidden"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                style={{ zIndex: 999, touchAction: 'pan-y' }}
+              />
               <div style={{ padding: "177.78% 0 0 0", position: "relative" }}>
                 <div style={{ height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }}>
                   <div key={currentVideo} className={`wistia_embed wistia_async_${videos[currentVideo]} seo=true videoFoam=true fitStrategy=cover`} style={{ height: "100%", position: "relative", width: "100%" }} />
@@ -200,19 +241,19 @@ function FairGallery() {
                 <>
                   <button
                     onClick={() => setCurrentVideo(prev => prev === 0 ? videos.length - 1 : prev - 1)}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110 z-10"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110 z-10"
                     style={{ background: 'rgba(0,0,0,0.5)', color: 'white', backdropFilter: 'blur(8px)' }}
                   >
                     ‹
                   </button>
                   <button
                     onClick={() => setCurrentVideo(prev => (prev + 1) % videos.length)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110 z-10"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110 z-10"
                     style={{ background: 'rgba(0,0,0,0.5)', color: 'white', backdropFilter: 'blur(8px)' }}
                   >
                     ›
                   </button>
-                  <div className="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2 z-10">
+                  <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-2 z-10">
                     {videos.map((_, i) => (
                       <button
                         key={i}
@@ -230,42 +271,23 @@ function FairGallery() {
             </div>
           </SR>
 
-          {/* Sağ: Fotoğraf Galerisi — aynı yükseklikte */}
-          <SR delay={0.15}>
-            <div className="relative rounded-2xl overflow-hidden" style={{ background: "var(--bg-card)", paddingTop: "177.78%" }}>
-              {galleryImages.map((img, i) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={i}
-                  src={img.src}
-                  alt={img.alt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{
-                    opacity: i === current ? 1 : 0,
-                    transform: i === current ? 'scale(1)' : 'scale(1.05)',
-                    transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-in-out',
-                  }}
-                />
-              ))}
-              <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)" }} />
-              <div className="absolute bottom-0 inset-x-0 p-6">
-                <p className="text-white text-sm font-medium mb-3" style={{ transition: 'opacity 0.5s' }}>{galleryImages[current].alt}</p>
-                <div className="flex gap-2">
-                  {galleryImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrent(i)}
-                      className="h-1.5 rounded-full transition-all duration-500"
-                      style={{
-                        width: i === current ? 28 : 10,
-                        background: i === current ? 'var(--accent)' : 'rgba(255,255,255,0.4)',
-                      }}
+          {/* Sağ: 6 Fotoğraf kutusu — 3x2 grid */}
+          <div className="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+            {galleryImages.map((img, i) => (
+              <SR key={i} delay={i * 0.08}>
+                <div className="relative rounded-2xl overflow-hidden group cursor-pointer" style={{ background: "var(--bg-card)" }}>
+                  <div className="aspect-[3/4]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                  ))}
+                  </div>
                 </div>
-              </div>
-            </div>
-          </SR>
+              </SR>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -318,23 +340,7 @@ function AboutPreview() {
   )
 }
 
-function Stats() {
-  const { t } = useLang()
-  return (
-    <section className="py-10 md:py-16 px-4 sm:px-6 border-y" style={{ borderColor: "var(--border)", background: "var(--bg-card)" }}>
-      <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {t.stats.map((s, i) => (
-          <SR key={i} delay={i * 0.1} className="text-center py-6">
-            <div className="font-heading text-4xl md:text-5xl font-bold text-gradient">
-              {s.num}<span className="text-2xl">{s.suffix}</span>
-            </div>
-            <div className="mt-2 text-[.7rem] uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>{s.label}</div>
-          </SR>
-        ))}
-      </div>
-    </section>
-  )
-}
+
 
 function CTA() {
   const { t } = useLang()
@@ -365,7 +371,6 @@ export default function HomePage() {
       <Marquee />
       <MorgansShowcase />
       <FairGallery />
-      <Stats />
       <AboutPreview />
       <CTA />
       <Footer />

@@ -124,7 +124,7 @@ export default function IletisimPage() {
                       <label className="absolute left-4 top-3 text-sm pointer-events-none transition-all
                         peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-[.6rem] peer-focus:px-1
                         peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-[.6rem] peer-[:not(:placeholder-shown)]:px-1"
-                        style={{ color: "var(--text-muted)", background: "var(--bg-card)" }}>
+                        style={{ color: "var(--text-muted)", background: "var(--bg-elevated)" }}>
                         {c.name}
                       </label>
                     </div>
@@ -138,7 +138,7 @@ export default function IletisimPage() {
                       <label className="absolute left-4 top-3 text-sm pointer-events-none transition-all
                         peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-[.6rem] peer-focus:px-1
                         peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-[.6rem] peer-[:not(:placeholder-shown)]:px-1"
-                        style={{ color: "var(--text-muted)", background: "var(--bg-card)" }}>
+                        style={{ color: "var(--text-muted)", background: "var(--bg-elevated)" }}>
                         {c.email}
                       </label>
                     </div>
@@ -153,7 +153,7 @@ export default function IletisimPage() {
                     <label className="absolute left-4 top-3 text-sm pointer-events-none transition-all
                       peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-[.6rem] peer-focus:px-1
                       peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-[.6rem] peer-[:not(:placeholder-shown)]:px-1"
-                      style={{ color: "var(--text-muted)", background: "var(--bg-card)" }}>
+                      style={{ color: "var(--text-muted)", background: "var(--bg-elevated)" }}>
                       {c.subject}
                     </label>
                   </div>
@@ -167,7 +167,7 @@ export default function IletisimPage() {
                     <label className="absolute left-4 top-3 text-sm pointer-events-none transition-all
                       peer-focus:-top-2.5 peer-focus:left-3 peer-focus:text-[.6rem] peer-focus:px-1
                       peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-[.6rem] peer-[:not(:placeholder-shown)]:px-1"
-                      style={{ color: "var(--text-muted)", background: "var(--bg-card)" }}>
+                      style={{ color: "var(--text-muted)", background: "var(--bg-elevated)" }}>
                       {c.message}
                     </label>
                   </div>

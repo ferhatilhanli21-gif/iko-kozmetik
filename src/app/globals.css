@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 @theme {
   --font-heading: var(--font-heading), Georgia, serif;
   --font-sans: var(--font-body), system-ui, sans-serif;
@@ -206,4 +211,9 @@ html.dark .glass {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-right: 0.05em;
+}
+
+.font-accent.italic {
+  padding-right: 0.05em;
 }

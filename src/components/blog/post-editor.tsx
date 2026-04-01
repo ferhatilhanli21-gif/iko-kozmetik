@@ -12,23 +12,16 @@ import { Badge } from '@/components/ui/badge'
 import { Switch } from '@/components/ui/switch'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { SeoPanel } from './seo-panel'
 import { supabase } from '@/lib/supabase'
 import type { Post } from '@/lib/admin-data'
 import { cn } from '@/lib/utils'
 
-const CATEGORIES = ['Genel', 'Ürünler', 'Saç Bakımı', 'Sakal & Tıraş', 'Stil & Moda', 'Haberler']
-
 function slugify(text: string) {
+  const turkishMap: Record<string, string> = { 'ş': 's', 'ğ': 'g', 'ü': 'u', 'ö': 'o', 'ç': 'c', 'ı': 'i', 'İ': 'i', 'Ş': 's', 'Ğ': 'g', 'Ü': 'u', 'Ö': 'o', 'Ç': 'c' }
   return text
     .toLowerCase()
+    .replace(/[şğüöçıİŞĞÜÖÇ]/g, c => turkishMap[c] || c)
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '')
@@ -143,9 +136,12 @@ export function PostEditor({ post }: PostEditorProps) {
   async function handleSave(publishNow?: boolean) {
     setSaving(true)
     const finalStatus = publishNow ? 'published' : status
+    // Slug boşsa başlıktan otomatik üret
+    const finalSlug = slug || slugify(title)
+    if (!slug && finalSlug) setSlug(finalSlug)
     const payload = {
       title,
-      slug,
+      slug: finalSlug,
       content,
       excerpt,
       featured_image: featuredImage,
@@ -447,27 +443,6 @@ export function PostEditor({ post }: PostEditorProps) {
                   Yayınla
                 </Button>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Category */}
-          <Card className="border border-border">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold">Kategori</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger className="h-8 text-sm">
-                  <SelectValue placeholder="Kategori seçin..." />
-                </SelectTrigger>
-                <SelectContent>
-                  {CATEGORIES.map((cat) => (
-                    <SelectItem key={cat} value={cat} className="text-sm">
-                      {cat}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </CardContent>
           </Card>
 
