@@ -30,8 +30,8 @@ function Hero() {
       <motion.div style={{ opacity }} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full pt-20 pb-16 md:pt-28 md:pb-24">
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading text-4xl sm:text-5xl md:text-7xl font-normal leading-[1.05] mb-5 max-w-4xl">
-          <span className="italic text-gradient">{t.hero.title1}</span>
+          className="font-heading text-4xl sm:text-5xl md:text-7xl font-normal leading-[1.2] mb-5 max-w-4xl">
+          <span className="italic text-gradient inline-block pt-[0.15em]">{t.hero.title1}</span>
           <br />
           <span className="text-3xl sm:text-4xl md:text-5xl" style={{ color: "var(--text)" }}>{t.hero.title2}</span>
         </motion.h1>
