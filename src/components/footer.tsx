@@ -11,7 +11,7 @@ export function Footer() {
   const NAV_LINKS = [
     { href: "/", label: t.nav.home },
     { href: "/hakkimizda", label: t.nav.about },
-    { href: "/blog", label: t.nav.blog },
+    { href: "/markalarimiz", label: t.nav.brands },
     { href: "/iletisim", label: t.nav.contact },
   ]
   return (

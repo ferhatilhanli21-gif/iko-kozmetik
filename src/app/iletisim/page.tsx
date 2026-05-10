@@ -8,34 +8,15 @@ import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle } from "lucide-reac
 import { useLang } from "@/lib/i18n"
 import { supabase } from "@/lib/supabase"
 
-function MiniMap() {
-  const { t } = useLang()
-  const mapUrl = "https://www.google.com/maps/search/?api=1&query=Yukari+Dudullu+Mah+Alemdag+Cad+Feza+Sk+No+12+A+Umraniye+Istanbul"
+function AddressCard() {
+  const { lang } = useLang()
   return (
-    <a href={mapUrl} target="_blank" rel="noopener noreferrer"
-      className="group block relative rounded-2xl overflow-hidden border transition-all hover:shadow-xl"
-      style={{ borderColor: "var(--border)" }}>
-      <div className="relative h-[200px] overflow-hidden" style={{ background: "var(--bg-elevated)" }}>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.4!2d29.1545!3d41.0195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac8f6a7e0b1d7%3A0x0!2zWXVrYXLEsSBEdWR1bGx1IE1haC4gQWxlbWRhxJ8gQ2FkLCBGZXphIFNrLiBObzoxMi9BLCAzNDc3NSDDnG1yYW5peWUvxLBzdGFuYnVs!5e0!3m2!1str!2str"
-          className="w-full h-full border-0 pointer-events-none"
-          style={{ filter: "saturate(0.3) contrast(1.1)" }}
-          loading="lazy" title="İKO Kozmetik Konum"
-        />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-          style={{ background: "rgba(201,168,76,0.1)" }}>
-          <div className="px-4 py-2 rounded-full text-[.65rem] font-semibold uppercase tracking-wider flex items-center gap-1.5"
-            style={{ background: "var(--accent)", color: "white" }}>
-            <MapPin size={12} /> {t.contact.maps_open}
-          </div>
-        </div>
-      </div>
-      <div className="px-4 py-3 flex items-center gap-2.5" style={{ background: "var(--bg-card)" }}>
-        <MapPin size={14} className="text-gold shrink-0" />
-        <span className="text-xs leading-tight" style={{ color: "var(--text-muted)" }}>Yukarı Dudullu Mah. Alemdağ Cad, Feza Sk. No:12/A, 34775 Ümraniye/İstanbul</span>
-        <ArrowRight size={12} className="ml-auto shrink-0 transition-colors group-hover:text-gold" style={{ color: "var(--text-muted)" }} />
-      </div>
-    </a>
+    <div className="p-5 rounded-2xl border transition-all hover:-translate-y-1 hover:shadow-lg"
+      style={{ borderColor: "var(--border)", background: "var(--bg-card)", boxShadow: "var(--shadow)" }}>
+      <MapPin size={16} className="text-gold mb-2" />
+      <h3 className="font-heading text-sm mb-1" style={{ color: "var(--text)" }}>{lang === "tr" ? "Adres" : "Address"}</h3>
+      <p className="text-sm" style={{ color: "var(--text-muted)" }}>Yukarı Dudullu Mah. Alemdağ Cad, Feza Sk. No:12/A, 34775 Ümraniye/İstanbul</p>
+    </div>
   )
 }
 
@@ -90,7 +71,7 @@ export default function IletisimPage() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12">
           <div className="space-y-4">
-            <SR><MiniMap /></SR>
+            <SR><AddressCard /></SR>
             {infoCards.map((card, i) => (
               <SR key={i} delay={(i + 1) * 0.08}>
                 <div className="p-5 rounded-2xl border transition-all hover:-translate-y-1 hover:shadow-lg"

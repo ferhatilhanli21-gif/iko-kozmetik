@@ -5,7 +5,7 @@ type Lang = "tr" | "en"
 
 export const translations = {
   tr: {
-    nav: { home: "Anasayfa", about: "Hakkımızda", blog: "Blog", contact: "İletişim", cta: "Bize Ulaşın" },
+    nav: { home: "Anasayfa", about: "Hakkımızda", brands: "Markalarımız", contact: "İletişim", cta: "Bize Ulaşın" },
     hero: {
       badge: "Morgan's Pomade Türkiye Distribütörü",
       title1: "Profesyonel Kozmetik Markalarını",
@@ -65,10 +65,10 @@ export const translations = {
       tag: "Biz Kimiz",
       title: "Hakkımızda",
       story_tag: "Hikayemiz",
-      story_title: "İKO Kozmetik",
-      p1: "İko Kozmetik; İngiltere'nin en eski saç ve güzellik ürünleri üreticilerinden biri olan Morgan's Pomade markasının Türkiye Distribütörlüğünü yapmaktadır.",
-      p2: "50'den fazla ülkede var olan Morgan's Pomade, 1 Milyar Kavanoz Pomat satışına ulaştığını gururla açıkladı.",
-      p3: "Morgan's Pomade ürün üretiminde mümkün olan en fazla oranda kaliteli içerik ve geri dönüşümlü ambalajlar kullanmaya özen göstermektedir.",
+      story_title: "İKO Kozmetik Hakkında",
+      p1: "Türkiye'nin güzellik sektöründe güvenilir çözüm ortağı",
+      p2: "İKO Kozmetik, Türkiye'deki kuaför ve berber salonlarının dünya standartlarında profesyonel ürünlere erişebildiği bir sektör yaratma vizyonuyla kurulmuştur.",
+      p3: "Salonların \"yurtdışından getirtme\" derdini bitirerek, kanıtlanmış markaları kapılarına kadar getiren referans distribütörüz.",
       timeline_tag: "Yolculuk",
       timeline_title: "Kilometre Taşları",
       milestones: [
@@ -116,7 +116,7 @@ export const translations = {
     },
   },
   en: {
-    nav: { home: "Home", about: "About Us", blog: "Blog", contact: "Contact", cta: "Contact Us" },
+    nav: { home: "Home", about: "About Us", brands: "Our Brands", contact: "Contact", cta: "Contact Us" },
     hero: {
       badge: "Morgan's Pomade Turkey Distributor",
       title1: "Professional Cosmetic Brands",
@@ -176,10 +176,10 @@ export const translations = {
       tag: "Who We Are",
       title: "About Us",
       story_tag: "Our Story",
-      story_title: "İKO Cosmetics",
-      p1: "İKO Cosmetics is the official Turkey distributor of Morgan's Pomade, one of England's oldest hair and beauty product manufacturers.",
-      p2: "Present in over 50 countries, Morgan's Pomade has proudly announced reaching 1 Billion jar sales.",
-      p3: "Morgan's Pomade strives to use the highest quality ingredients and recyclable packaging in all its products.",
+      story_title: "About İKO Cosmetics",
+      p1: "A trusted partner in Turkey's beauty industry.",
+      p2: "İKO Cosmetics was founded with the vision of creating an industry where barber shops and hair salons in Turkey can access world-class professional products.",
+      p3: "We are the reference distributor that eliminates the hassle of importing from abroad, bringing proven brands right to the doors of salons.",
       timeline_tag: "Journey",
       timeline_title: "Milestones",
       milestones: [

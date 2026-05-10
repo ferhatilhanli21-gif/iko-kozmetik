@@ -17,7 +17,7 @@ export function Navbar() {
   const NAV = [
     { href: "/", label: t.nav.home },
     { href: "/hakkimizda", label: t.nav.about },
-    { href: "/blog", label: t.nav.blog },
+    { href: "/markalarimiz", label: t.nav.brands },
     { href: "/iletisim", label: t.nav.contact },
   ]
 
